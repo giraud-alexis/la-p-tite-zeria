@@ -1,28 +1,43 @@
 import React from "react";
 import Image from "next/image";
-import { Product } from "@/app/types";
+import { CaProduct } from "@/app/types";
 import styles from "./page.module.scss";
 
 interface ProductSectionProps {
   id: string;
-  products: Product[];
+  Caproducts: CaProduct[];
 }
 
-const ProductSection: React.FC<ProductSectionProps> = ({ id, products }) => {
+const ProductSection: React.FC<ProductSectionProps> = ({ id, Caproducts }) => {
   return (
     <section id={id} className={styles.product}>
       <h2>Nos Produits</h2>
       <div className={styles.productList}>
-        {products.map((product) => (
-          <div key={product.id} className={styles.productItem}>
+        {Caproducts.map((caproduct) => (
+          <div key={caproduct.id} className={styles.productItem}>
+            <h3>{caproduct.name}</h3>
             <Image
-              src={product.imgurl}
-              alt={product.name}
+              src={caproduct.imgurl}
+              alt={caproduct.name}
               width={100}
               height={100}
             />
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
+            <p>{caproduct.description}</p>
+            <div className={styles.associatedProducts}>
+              {(caproduct.Products || []).map((associatedProduct) => (
+                <div key={associatedProduct.id}>
+                  <Image
+                    src={associatedProduct.imgurl}
+                    alt={associatedProduct.name}
+                    width={100}
+                    height={100}
+                  />
+                  <span>{associatedProduct.name}</span>
+                  <p>{associatedProduct.description}</p>
+                  <span>{associatedProduct.price} €</span>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>

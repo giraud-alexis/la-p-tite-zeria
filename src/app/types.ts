@@ -10,10 +10,20 @@ export interface Prestation {
 }
 
 export interface Product {
+    id: number;
+    imgurl: string;
+    name: string;
+    description: string;
+    ref: string;
+    price: number;
+}
+
+export interface CaProduct {
   id: number;
   name: string;
   imgurl: string;
   description: string;
+  Products: Product[];
 }
 
 export interface Employee {

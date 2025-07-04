@@ -5,21 +5,21 @@ import facebook from "@/app/assets/img/facebook.svg";
 import x from "@/app/assets/img/icons8-twitter.svg";
 import instagram from "@/app/assets/img/icons8-instagram.svg";
 import tictoc from "@/app/assets/img/icons8-tic-tac.svg";
-import PrestationSection from "./components/prestation/PrestationSection";
+import pelle from "@/app/assets/img/pelle.svg";
+import fleche from "@/app/assets/img/fleche-bas.svg";
 import ProductSection from "./components/product/ProductSection";
 import EmployeeSection from "./components/employee/EmployeeSection";
 import PromoSection from "./components/promo/PromoSection";
 import MeaSection from "./components/mise-en-avant/Mea";
 import styles from "./page.module.scss";
 import EventSection from "./components/event/EventSection";
-import ArticleSection from "./components/article/ArticleSection";
 
 async function fetchData() {
   try {
     const [
       fetchDataEntreprise,
       fetchDataPrestation,
-      fetchDataProduct,
+      fetchDataCaProduct,
       fetchDataEmployee,
       fetchDataPromo,
       fetchDataMea,
@@ -45,7 +45,7 @@ async function fetchData() {
     if (
       !fetchDataEntreprise.ok ||
       !fetchDataPrestation.ok ||
-      !fetchDataProduct.ok ||
+      !fetchDataCaProduct.ok ||
       !fetchDataEmployee.ok ||
       !fetchDataPromo.ok ||
       !fetchDataMea.ok ||
@@ -57,18 +57,18 @@ async function fetchData() {
 
     const dataEntreprise = await fetchDataEntreprise.json();
     const dataPrestation = await fetchDataPrestation.json();
-    const dataProduct = await fetchDataProduct.json();
+    const dataCaProduct = await fetchDataCaProduct.json();
     const dataEmployee = await fetchDataEmployee.json();
     const dataPromo = await fetchDataPromo.json();
     const dataMea = await fetchDataMea.json();
     const dataEvent = await fetchDataEvent.json();
     const dataArticle = await fetchDataArticle.json();
-    console.log(dataProduct);
+    console.log(dataCaProduct);
 
     return {
       dataEntreprise,
       dataPrestation,
-      dataProduct,
+      dataCaProduct,
       dataEmployee,
       dataPromo,
       dataMea,
@@ -85,7 +85,7 @@ export default async function Home() {
   const {
     dataEntreprise,
     dataPrestation,
-    dataProduct,
+    dataCaProduct,
     dataEmployee,
     dataPromo,
     dataMea,
@@ -107,11 +107,10 @@ export default async function Home() {
           />
         </div>
         <nav className={styles.nav}>
-          <Link href="#presentations">Présentation</Link>
           {dataPrestation && dataPrestation.length > 0 && (
             <Link href="#prestations">Prestations</Link>
           )}
-          {dataProduct && dataProduct.length > 0 && (
+          {dataCaProduct && dataCaProduct.length > 0 && (
             <Link href="#products">Produits</Link>
           )}
           {dataEmployee && dataEmployee.length > 0 && (
@@ -135,40 +134,50 @@ export default async function Home() {
         </div>
       </header>
       <main className={styles.main}>
-        <h1>Bienvenue chez {dataEntreprise.name}</h1>
-        <section id="presentations" className={styles.presentation}>
+        <h1 className={styles.tittle}>{dataEntreprise.name}</h1>
+        <div className={styles.introLogo}>
+          <Image
+            className={styles.logoOne}
+            src={dataEntreprise.logourl}
+            alt={dataEntreprise.name}
+            height={300}
+            width={300}
+          />
+          <Image
+            className={styles.logoPelleOne}
+            src={pelle}
+            alt="pelle"
+            height={500}
+            width={500}
+          />
+          <Image
+            className={styles.logoPelleTwo}
+            src={pelle}
+            alt="pelle"
+            height={500}
+            width={500}
+          />
+        </div>
+        <div className={styles.intro}>
           <p>
-            {dataEntreprise.adress}, {dataEntreprise.zipcode}{" "}
-            {dataEntreprise.city}
+            Bienvenue à <span> {dataEntreprise.name}</span> , notre pizzeria
+            autentique et local ou chacune de nos pizza sont préparé avec soin
+            et amour.
           </p>
-          <p>
-            Email:{" "}
-            <a href={`mailto:${dataEntreprise.email}`}>
-              {dataEntreprise.email}
-            </a>
-          </p>
-          <p>
-            Phone:{" "}
-            <a href={`tel:${dataEntreprise.phone}`}>{dataEntreprise.phone}</a>
-          </p>
-          <p>
-            Website:{" "}
-            <a
-              href={dataEntreprise.website}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {dataEntreprise.website}
-            </a>
-          </p>
-        </section>
+        </div>
+        <div className={styles.scroll}>
+          <span>scroll</span>
+          <Image
+            className={styles.logoScroll}
+            src={fleche}
+            alt="scroll"
+            height={50}
+            width={50}
+          />
+        </div>
 
-        {dataPrestation && dataPrestation.length > 0 && (
-          <PrestationSection id="prestations" prestations={dataPrestation} />
-        )}
-
-        {dataProduct && dataProduct.length > 0 && (
-          <ProductSection id="products" products={dataProduct} />
+        {dataMea && dataMea.length > 0 && (
+          <MeaSection id="meas" miseEnAvants={dataMea} />
         )}
 
         {dataEmployee && dataEmployee.length > 0 && (
@@ -179,16 +188,12 @@ export default async function Home() {
           <PromoSection id="promos" promos={dataPromo} />
         )}
 
-        {dataMea && dataMea.length > 0 && (
-          <MeaSection id="meas" miseEnAvants={dataMea} />
+        {dataCaProduct && dataCaProduct.length > 0 && (
+          <ProductSection id="products" Caproducts={dataCaProduct} />
         )}
 
         {dataEvent && dataEvent.length > 0 && (
           <EventSection id="events" Events={dataEvent} />
-        )}
-
-        {dataArticle && dataArticle.length > 0 && (
-          <ArticleSection id="articles" articles={dataArticle} />
         )}
       </main>
       <footer className={styles.footer}>
