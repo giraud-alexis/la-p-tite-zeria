@@ -13,6 +13,7 @@ import PromoSection from "./components/promo/PromoSection";
 import MeaSection from "./components/mise-en-avant/Mea";
 import styles from "./page.module.scss";
 import EventSection from "./components/event/EventSection";
+import DynamicAnimationLoader from "./components/animation/DynamicAnimationLoader";
 
 async function fetchData() {
   try {
@@ -114,7 +115,7 @@ export default async function Home() {
             <Link href="#products">Produits</Link>
           )}
           {dataEmployee && dataEmployee.length > 0 && (
-            <Link href="#employees">Employés</Link>
+            <Link href="#employees">En savoir plus</Link>
           )}
           {dataPromo && dataPromo.length > 0 && (
             <Link href="#promos">Promotions</Link>
@@ -144,14 +145,14 @@ export default async function Home() {
             width={300}
           />
           <Image
-            className={styles.logoPelleOne}
+            className={`${styles.logoPelleOne} logoPelleOne`}
             src={pelle}
             alt="pelle"
             height={500}
             width={500}
           />
           <Image
-            className={styles.logoPelleTwo}
+            className={`${styles.logoPelleTwo} logoPelleTwo`}
             src={pelle}
             alt="pelle"
             height={500}
@@ -165,6 +166,7 @@ export default async function Home() {
             et amour.
           </p>
         </div>
+        <DynamicAnimationLoader />
         <div className={styles.scroll}>
           <span>scroll</span>
           <Image

@@ -1,7 +1,84 @@
+@font-face {
+  font-family: itim;
+  src: url(../../assets/fonts/Itim/Itim-Regular.ttf);
+}
+@font-face {
+  font-family: dancing;
+  src: url(../../assets/fonts/Dancing_Script/static/DancingScript-Bold.ttf);
+}
+
 .product {
+  width: 100%;
+  margin: 10% auto;
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: itim;
+  & > h3 {
+    margin: 3% auto;
+    font-size: 2rem;
+  }
+  & > .productList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > .productItem {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgb(14, 14, 14);
+      border-radius: 100px;
+      & > .caproduct {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & > h4 {
+          font-family: dancing;
+          margin: 5%;
+          font-size: 2rem;
+        }
+        & > img {
+          margin: 5% auto;
+          border-radius: 50px;
+        }
+        & > p {
+          font-size: 1.5rem;
+        }
+      }
+      & > .associatedProducts {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & > .associatedProduct {
+          width: 100%;
+          margin: 2% auto;
+          padding: 3%;
+          border-radius: 30px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border: 5px solid #141414;
+          & > img {
+            border-radius: 50px;
+          }
+          & > .description {
+            height: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            & > span {
+              font-family: dancing;
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
