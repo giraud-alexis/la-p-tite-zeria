@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { CaProduct } from "@/app/types";
 import styles from "./page.module.scss";
-import DynamicProductAnimationsLoader from "../animation/productAnimation/DynamicProductAnimationsLoader";
+// import DynamicProductAnimationsLoader from "../animation/productAnimation/DynamicProductAnimationsLoader";
 
 interface ProductSectionProps {
   id: string;
@@ -53,7 +53,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ id, Caproducts }) => {
           </div>
         ))}
       </div>
-      <DynamicProductAnimationsLoader />
+      {/* <DynamicProductAnimationsLoader /> */}
     </section>
   );
 };

@@ -13,7 +13,7 @@ import PromoSection from "./components/promo/PromoSection";
 import MeaSection from "./components/mise-en-avant/Mea";
 import styles from "./page.module.scss";
 import EventSection from "./components/event/EventSection";
-import DynamicAnimationLoader from "./components/animation/DynamicAnimationLoader";
+// import DynamicAnimationLoader from "./components/animation/DynamicAnimationLoader";
 
 async function fetchData() {
   try {
@@ -166,7 +166,7 @@ export default async function Home() {
             et amour.
           </p>
         </div>
-        <DynamicAnimationLoader />
+        {/* <DynamicAnimationLoader /> */}
         <div className={styles.scroll}>
           <span>scroll</span>
           <Image
