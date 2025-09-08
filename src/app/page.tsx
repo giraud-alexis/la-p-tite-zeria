@@ -16,6 +16,8 @@ import EventSection from "./components/event/EventSection";
 // import DynamicAnimationLoader from "./components/animation/DynamicAnimationLoader";
 
 async function fetchData() {
+  const NEXT_PUBLIC_API = "https://apiclient.weblume.fr";
+  const ID = "2";
   try {
     const [
       fetchDataEntreprise,
@@ -27,20 +29,14 @@ async function fetchData() {
       fetchDataEvent,
       fetchDataArticle,
     ] = await Promise.all([
-      fetch(
-        `${process.env.NEXT_PUBLIC_API}/entreprisepublic/${process.env.ID}`
-      ),
-      fetch(
-        `${process.env.NEXT_PUBLIC_API}/caprestationspublic/${process.env.ID}`
-      ),
-      fetch(
-        `${process.env.NEXT_PUBLIC_API}/caproductspublic/${process.env.ID}`
-      ),
-      fetch(`${process.env.NEXT_PUBLIC_API}/employeespublic/${process.env.ID}`),
-      fetch(`${process.env.NEXT_PUBLIC_API}/promospublic/${process.env.ID}`),
-      fetch(`${process.env.NEXT_PUBLIC_API}/measpublic/${process.env.ID}`),
-      fetch(`${process.env.NEXT_PUBLIC_API}/eventspublic/${process.env.ID}`),
-      fetch(`${process.env.NEXT_PUBLIC_API}/articlespublic/${process.env.ID}`),
+      fetch(`${NEXT_PUBLIC_API}/entreprisepublic/${ID}`),
+      fetch(`${NEXT_PUBLIC_API}/caprestationspublic/${ID}`),
+      fetch(`${NEXT_PUBLIC_API}/caproductspublic/${ID}`),
+      fetch(`${NEXT_PUBLIC_API}/employeespublic/${ID}`),
+      fetch(`${NEXT_PUBLIC_API}/promospublic/${ID}`),
+      fetch(`${NEXT_PUBLIC_API}/measpublic/${ID}`),
+      fetch(`${NEXT_PUBLIC_API}/eventspublic/${ID}`),
+      fetch(`${NEXT_PUBLIC_API}/articlespublic/${ID}`),
     ]);
 
     if (
