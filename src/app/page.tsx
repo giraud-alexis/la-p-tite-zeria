@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
@@ -30,14 +29,14 @@ async function fetchData() {
       fetchDataEvent,
       fetchDataArticle,
     ] = await Promise.all([
-      fetch(`${API}/entreprisepublic/${ID}`),
-      fetch(`${API}/caprestationspublic/${ID}`),
-      fetch(`${API}/caproductspublic/${ID}`),
-      fetch(`${API}/employeespublic/${ID}`),
-      fetch(`${API}/promospublic/${ID}`),
-      fetch(`${API}/measpublic/${ID}`),
-      fetch(`${API}/eventspublic/${ID}`),
-      fetch(`${API}/articlespublic/${ID}`),
+      fetch(`${API}/entreprisepublic/${ID}`, { cache: "no-store" }),
+      fetch(`${API}/caprestationspublic/${ID}`, { cache: "no-store" }),
+      fetch(`${API}/caproductspublic/${ID}`, { cache: "no-store" }),
+      fetch(`${API}/employeespublic/${ID}`, { cache: "no-store" }),
+      fetch(`${API}/promospublic/${ID}`, { cache: "no-store" }),
+      fetch(`${API}/measpublic/${ID}`, { cache: "no-store" }),
+      fetch(`${API}/eventspublic/${ID}`, { cache: "no-store" }),
+      fetch(`${API}/articlespublic/${ID}`, { cache: "no-store" }),
     ]);
 
     if (
